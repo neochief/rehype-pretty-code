@@ -3,7 +3,9 @@ import type { Options, Theme, CharsHighlighterOptions } from './types';
 import {
   type Highlighter,
   type CodeToHastOptions,
-  getHighlighter as defaultGetHighlighter,
+  // THIS IS THE ONLY CHANGE NECESSARY TO GET RID OF SHIKI
+  // DEFAULT IMPORTS.
+  //getHighlighter as defaultGetHighlighter,
 } from 'shiki';
 import { visit } from 'unist-util-visit';
 import { toString as hastToString } from 'hast-util-to-string';
@@ -175,7 +177,7 @@ export function rehypePrettyCode(
     defaultLang = '',
     tokensMap = {},
     filterMetaString = (v) => v,
-    getHighlighter = defaultGetHighlighter,
+    getHighlighter,
     transformers,
     onVisitLine,
     onVisitHighlightedLine,
